@@ -713,7 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f56e1206f9ab184d808c382a5201b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundTimer: 5
+  roundTimer: 30
   m_Volume: 1
 --- !u!114 &1036448180
 MonoBehaviour:

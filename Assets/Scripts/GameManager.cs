@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Pair<T, U>
 {
@@ -22,14 +23,14 @@ public class Pair<T, U>
 
 public class GameManager : MonoBehaviour
 {
-    public RandomSound random;
     public Text timer;
+    public Text streak;
     public AudioSource audioSource;
 
     GameSettings settings;
     float internalTimer;
 
-
+    int currStreak;
 
     // Use this for initialization
     void Start()
@@ -47,9 +48,10 @@ public class GameManager : MonoBehaviour
             internalTimer = 31f;
             audioSource.volume = 1f;
         }
-    }
 
-    
+        currStreak = 0;
+        streak.text = "Streak: " + currStreak.ToString();
+    }
 
     // Update is called once per frame
     void Update()
@@ -62,8 +64,22 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            internalTimer = 5;
-            random.ChooseRandomSound();
+            SceneManager.LoadScene("Main Menu");
+        }
+    }
+
+    public void ScorePoint()
+    {
+        currStreak++;
+        streak.text = "Streak: " + currStreak.ToString();
+
+        if (settings != null)
+        {
+            internalTimer = settings.roundTimer + 1;
+        }
+        else
+        {
+            internalTimer = 31f;
         }
     }
 }

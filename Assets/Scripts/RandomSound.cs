@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class RandomSound : MonoBehaviour
 {
-    // for debugging
-    public Text debugText;
-
     public Transform heartLocation;
     public Transform lungLocation;
 
@@ -23,6 +20,8 @@ public class RandomSound : MonoBehaviour
     public Button[] answerButtons;
     string correctAnswer;
     int correctAnswerPosition;
+
+    public GameManager gameManager;
 
     // Use this for initialization
     void Start()
@@ -38,6 +37,11 @@ public class RandomSound : MonoBehaviour
 
         guessButton = GameObject.Find("Guess").GetComponent<Button>();
         guessButton.onClick.AddListener(guessOnClick);
+
+        answerButtons[0].onClick.AddListener(answerOnClick0);
+        answerButtons[1].onClick.AddListener(answerOnClick1);
+        answerButtons[2].onClick.AddListener(answerOnClick2);
+        answerButtons[3].onClick.AddListener(answerOnClick3);
     }
 
     public void ChooseRandomSound()
@@ -52,7 +56,6 @@ public class RandomSound : MonoBehaviour
             transform.position = heartLocation.position;
             audioSource.Play();
             correctAnswer = heartSounds[random].First;
-            debugText.text = "Now Playing:\n" + heartSounds[random].First;
         }
         else if (heartOrLung == 1) // lung
         {
@@ -61,7 +64,6 @@ public class RandomSound : MonoBehaviour
             transform.position = lungLocation.position;
             audioSource.Play();
             correctAnswer = lungSounds[random].First;
-            debugText.text = "Now Playing:\n" + lungSounds[random].First;
         }
         else
         {
@@ -133,9 +135,69 @@ public class RandomSound : MonoBehaviour
 
     private void Update()
     {
+        if (audioSource.isPlaying)
+        {
+            Debug.Log("HELLO");
+        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             ChooseRandomSound();
+        }
+    }
+
+    void answerOnClick0()
+    {
+        Debug.Log("0");
+        if (correctAnswerPosition == 0)
+        {
+            gameManager.ScorePoint();
+            ChooseRandomSound();
+        }
+        else
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
+    }
+
+    void answerOnClick1()
+    {
+        Debug.Log("1");
+        if (correctAnswerPosition == 1)
+        {
+            gameManager.ScorePoint();
+            ChooseRandomSound();
+        }
+        else
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
+    }
+
+    void answerOnClick2()
+    {
+        Debug.Log("2");
+        if (correctAnswerPosition == 2)
+        {
+            gameManager.ScorePoint();
+            ChooseRandomSound();
+        }
+        else
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
+    }
+
+    void answerOnClick3()
+    {
+        Debug.Log("3");
+        if (correctAnswerPosition == 3)
+        {
+            gameManager.ScorePoint();
+            ChooseRandomSound();
+        }
+        else
+        {
+            SceneManager.LoadScene("Main Menu");
         }
     }
 

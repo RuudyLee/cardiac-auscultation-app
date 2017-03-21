@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.46169513, g: 0.5124164, b: 0.58993304, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -589,7 +589,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54029e1aa183bf64ca7bbaac52da7ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugText: {fileID: 803972990}
   heartLocation: {fileID: 550029105}
   lungLocation: {fileID: 952421994}
   answerButtons:
@@ -597,6 +596,7 @@ MonoBehaviour:
   - {fileID: 1944143393}
   - {fileID: 1222449612}
   - {fileID: 328858907}
+  gameManager: {fileID: 2120605669}
 --- !u!1 &550029104
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +932,7 @@ GameObject:
   - component: {fileID: 803972991}
   - component: {fileID: 803972990}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -953,8 +953,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -300, y: 150}
-  m_SizeDelta: {x: 600, y: 300}
+  m_AnchoredPosition: {x: -360, y: 106}
+  m_SizeDelta: {x: 650, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &803972990
 MonoBehaviour:
@@ -968,7 +968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -977,10 +977,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 67
+    m_FontSize: 128
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 256
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -988,9 +988,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Now Playing:
-
-    aaaaaaaaaaaaaa'
+  m_Text: 'Streak: 5'
 --- !u!222 &803972991
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2082,8 +2080,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c810fe16cf180634fb030fb2042e67fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  random: {fileID: 530234487}
   timer: {fileID: 523774634}
+  streak: {fileID: 803972990}
   audioSource: {fileID: 530234485}
 --- !u!1 &2127974326
 GameObject:

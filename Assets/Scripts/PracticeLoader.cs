@@ -10,76 +10,52 @@ public class PracticeLoader : MonoBehaviour
     public Text pf_Header;
     public Button pf_Button;
 
+    public AudioClip[] heartSounds;
+    public AudioClip[] lungSounds;
+
     // Use this for initialization
     void Start()
     {
-        StartCoroutine(LoadSounds());
-
-    }
-
-    IEnumerator LoadSounds()
-    {
         int counter = 0;
 
-        // Load heart sounds
+        // Load heart buttons
         GameObject header = Instantiate(pf_Header).gameObject;
         header.transform.SetParent(this.transform);
-        header.transform.Translate(0f, -250f - (110f * counter++), 0f);
+        header.transform.Translate(0f, -300f - (110f * counter++), 0f);
 
-        DirectoryInfo dir = new DirectoryInfo("Assets/Sounds/Heart");
-        FileInfo[] info = dir.GetFiles("*.wav");
-
-
-        foreach (FileInfo fi in info)
+        foreach (AudioClip ac in heartSounds)
         {
-            WWW path = new WWW("file://" + fi.FullName);
-
-            while (!path.isDone)
-                yield return null;
-
             GameObject button = Instantiate(pf_Button).gameObject;
             button.name = counter.ToString();
             button.transform.SetParent(this.transform);
-            button.transform.Translate(720f, 2310f - (110f * counter++), 0f);
-            AudioClip ac = path.GetAudioClip(false);
+            button.transform.Translate(0f, -300f - (110f * counter++), 0f);
 
             button.GetComponent<AudioSource>().clip = ac;
-            button.GetComponentInChildren<Text>().text = fi.Name.Substring(0, fi.Name.Length - 4);
+            button.GetComponentInChildren<Text>().text = ac.name;
         }
 
-        // load lung sounds
+        // load lung buttons
         counter += 1;
 
         header = Instantiate(pf_Header).gameObject;
         header.GetComponent<Text>().text = "Lung Sounds";
         header.transform.SetParent(this.transform);
-        header.transform.Translate(720f, 2310f - (110f * counter++), 0f);
+        header.transform.Translate(0f, -300f - (110f * counter++), 0f);
 
-        dir = new DirectoryInfo("Assets/Sounds/Lungs");
-        info = dir.GetFiles("*.wav");
-
-
-        foreach (FileInfo fi in info)
+        foreach (AudioClip ac in lungSounds)
         {
-            WWW path = new WWW("file://" + fi.FullName);
-
-            while (!path.isDone)
-                yield return null;
-
             GameObject button = Instantiate(pf_Button).gameObject;
             button.name = counter.ToString();
             button.transform.SetParent(this.transform);
-            button.transform.Translate(720f, 2310f - (110f * counter++), 0f);
-            AudioClip ac = path.GetAudioClip(false);
+            button.transform.Translate(0f, -300f - (110f * counter++), 0f);
 
             button.GetComponent<AudioSource>().clip = ac;
-            button.GetComponentInChildren<Text>().text = fi.Name.Substring(0, fi.Name.Length - 4);
+            button.GetComponentInChildren<Text>().text = ac.name;
         }
 
         RectTransform rt = GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(0, 278f * counter);
     }
-
 
     // Update is called once per frame
     void Update()

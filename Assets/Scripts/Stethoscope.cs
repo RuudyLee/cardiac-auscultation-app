@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Stethoscope : MonoBehaviour
 {
-    public GameObject pf_stethoscope;
-
-    GameObject stethoscope;
+    public GameObject stethoscope;
 
     // Use this for initialization
     void Start()
@@ -27,28 +25,16 @@ public class Stethoscope : MonoBehaviour
             {
                 if (hit.collider.tag == "Human")
                 {
-                    if (stethoscope)
-                    {
-                        stethoscope.transform.position = hit.point;
-                    }
-                    else
-                    {
-                        stethoscope = Instantiate(pf_stethoscope, hit.point, Quaternion.identity);
-                    }
-                }
-                else
-                {
-                    Destroy(stethoscope);
+                    stethoscope.GetComponent<SpriteRenderer>().enabled = true;
+                    stethoscope.transform.position = hit.point;
                 }
             }
 
         }
         else
         {
-            if (stethoscope)
-            {
-                Destroy(stethoscope);
-            }
+            stethoscope.GetComponent<SpriteRenderer>().enabled = false;
+            stethoscope.transform.position = new Vector3(100f, 100f, 0f);
         }
     }
 }

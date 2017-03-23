@@ -12,9 +12,9 @@ public class RandomSound : MonoBehaviour
 
     AudioSource audioSource;
 
-    List<Pair<string, AudioClip>> heartSounds;
-    List<Pair<string, AudioClip>> lungSounds;
-    List<Pair<string, AudioClip>> allSounds;
+    public AudioClip[] heartSounds;
+    public AudioClip[] lungSounds;
+    AudioClip[] allSounds;
 
     Button guessButton;
     public Button[] answerButtons;
@@ -26,12 +26,10 @@ public class RandomSound : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        heartSounds = new List<Pair<string, AudioClip>>();
-        lungSounds = new List<Pair<string, AudioClip>>();
-        allSounds = new List<Pair<string, AudioClip>>();
-
-        // Load all sounds
-        StartCoroutine(LoadSounds());
+        // save a concatenated array of sounds
+        allSounds = new AudioClip[heartSounds.Length + lungSounds.Length];
+        heartSounds.CopyTo(allSounds, 0);
+        lungSounds.CopyTo(allSounds, heartSounds.Length);
 
         audioSource = GetComponent<AudioSource>();
 
@@ -42,6 +40,9 @@ public class RandomSound : MonoBehaviour
         answerButtons[1].onClick.AddListener(answerOnClick1);
         answerButtons[2].onClick.AddListener(answerOnClick2);
         answerButtons[3].onClick.AddListener(answerOnClick3);
+
+        // Begin
+        ChooseRandomSound();
     }
 
     public void ChooseRandomSound()
@@ -51,19 +52,19 @@ public class RandomSound : MonoBehaviour
         int random;
         if (heartOrLung == 0) // heart
         {
-            random = Random.Range(0, heartSounds.Count);
-            audioSource.clip = heartSounds[random].Second;
+            random = Random.Range(0, heartSounds.Length);
+            audioSource.clip = heartSounds[random];
             transform.position = heartLocation.position;
             audioSource.Play();
-            correctAnswer = heartSounds[random].First;
+            correctAnswer = heartSounds[random].name;
         }
         else if (heartOrLung == 1) // lung
         {
-            random = Random.Range(0, lungSounds.Count);
-            audioSource.clip = lungSounds[random].Second;
+            random = Random.Range(0, lungSounds.Length);
+            audioSource.clip = lungSounds[random];
             transform.position = lungLocation.position;
             audioSource.Play();
-            correctAnswer = lungSounds[random].First;
+            correctAnswer = lungSounds[random].name;
         }
         else
         {
@@ -74,6 +75,9 @@ public class RandomSound : MonoBehaviour
         correctAnswerPosition = Random.Range(0, 4);
         for (int i = 0; i < answerButtons.Length; i++)
         {
+            List<string> usedWords = new List<string>();
+            usedWords.Add(correctAnswer);
+
             if (i == correctAnswerPosition)
             {
                 // place correct answer here
@@ -85,60 +89,16 @@ public class RandomSound : MonoBehaviour
                 int randomWords;
                 do
                 {
-                    randomWords = Random.Range(0, allSounds.Count);
-                } while (randomWords == correctAnswerPosition);
-
-                answerButtons[i].GetComponentInChildren<Text>().text = allSounds[randomWords].First;
+                    randomWords = Random.Range(0, allSounds.Length);
+                } while (usedWords.Contains(allSounds[randomWords].name));
+                usedWords.Add(allSounds[randomWords].name);
+                answerButtons[i].GetComponentInChildren<Text>().text = allSounds[randomWords].name;
             }
         }
     }
 
-    IEnumerator LoadSounds()
-    {
-        // Load heart sounds
-        DirectoryInfo dir = new DirectoryInfo("Assets/Sounds/Heart");
-        FileInfo[] info = dir.GetFiles("*.wav");
-
-        foreach (FileInfo fi in info)
-        {
-            WWW path = new WWW("file://" + fi.FullName);
-
-            while (!path.isDone)
-                yield return null;
-
-            AudioClip ac = path.GetAudioClip(false);
-            heartSounds.Add(new Pair<string, AudioClip>(fi.Name.Substring(0, fi.Name.Length - 4), ac));
-        }
-
-        // load lung sounds     
-        dir = new DirectoryInfo("Assets/Sounds/Lungs");
-        info = dir.GetFiles("*.wav");
-
-        foreach (FileInfo fi in info)
-        {
-            WWW path = new WWW("file://" + fi.FullName);
-
-            while (!path.isDone)
-                yield return null;
-
-            AudioClip ac = path.GetAudioClip(false);
-            lungSounds.Add(new Pair<string, AudioClip>(fi.Name.Substring(0, fi.Name.Length - 4), ac));
-        }
-
-        // store a concatenated list
-        allSounds.AddRange(heartSounds);
-        allSounds.AddRange(lungSounds);
-
-        // boot it up!
-        ChooseRandomSound();
-    }
-
     private void Update()
     {
-        if (audioSource.isPlaying)
-        {
-            Debug.Log("HELLO");
-        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             ChooseRandomSound();

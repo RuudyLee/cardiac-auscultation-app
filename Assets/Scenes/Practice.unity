@@ -1045,3 +1045,38 @@ MonoBehaviour:
     type: 2}
   pf_Button: {fileID: 114033659438797848, guid: 0b9470af893139f4f902d8875f2ac79e,
     type: 2}
+  heartSounds:
+  - {fileID: 8300000, guid: 5a3cc8dd549a236488d743437f7dfb93, type: 3}
+  - {fileID: 8300000, guid: 23e75284422ed704391a22deefbdfc25, type: 3}
+  - {fileID: 8300000, guid: 0a3bcd95193ecd64cae8bdd5e9e60325, type: 3}
+  - {fileID: 8300000, guid: 6e769ce450476cb45bdd6cca89763dd1, type: 3}
+  - {fileID: 8300000, guid: 3a113417e44a4e04982078d99cf897f3, type: 3}
+  - {fileID: 8300000, guid: c0f1036da39d5e44296aaa381366f06a, type: 3}
+  - {fileID: 8300000, guid: a50a865476b43264ab62b376368a93d4, type: 3}
+  - {fileID: 8300000, guid: 12c4c7b361c17d8448e3aa949a644c07, type: 3}
+  - {fileID: 8300000, guid: 10f4ebdbc5327f0439079bf40e829198, type: 3}
+  - {fileID: 8300000, guid: 6d64ecdebf5145749a387d9aef2dad6d, type: 3}
+  - {fileID: 8300000, guid: c2b408f18f79ce9488ee25a63cf35607, type: 3}
+  - {fileID: 8300000, guid: 7ce656f9bbc5f0142942acfd5df5ba31, type: 3}
+  - {fileID: 8300000, guid: f78ff508018c3ea4baa4c4b8c5a21527, type: 3}
+  - {fileID: 8300000, guid: e5f4eaef81c9bc74b8e5154fd3bfe32f, type: 3}
+  - {fileID: 8300000, guid: 9ac7b49c7415e764db3e6333d0593ddf, type: 3}
+  - {fileID: 8300000, guid: 68b7bfeb0cd3bad4d92e7aab3fdc8b24, type: 3}
+  - {fileID: 8300000, guid: ca146d7d1a3e9324ba0f301c7040a32d, type: 3}
+  - {fileID: 8300000, guid: acba2cf6b04d57c43841ab71ae2208df, type: 3}
+  lungSounds:
+  - {fileID: 8300000, guid: e5d2822c74ca43f4097764a64bbeb17c, type: 3}
+  - {fileID: 8300000, guid: eafa0b9211c0e8e4e9ca6c6bc1f94666, type: 3}
+  - {fileID: 8300000, guid: dfe769c14732efe49b8590ff8f668cb4, type: 3}
+  - {fileID: 8300000, guid: d53c2580cb3a4344b972f0f2da5ec041, type: 3}
+  - {fileID: 8300000, guid: 766c5702a4eb40b4da00fd3c43ff9508, type: 3}
+  - {fileID: 8300000, guid: 7ae6b52b892633d47bd90d691ae13398, type: 3}
+  - {fileID: 8300000, guid: 821d1118035490646a91bf07ea6453eb, type: 3}
+  - {fileID: 8300000, guid: a2c07b1165594dc49aeb70530d5578e9, type: 3}
+  - {fileID: 8300000, guid: 5ce13a6690f47d94e8330888fda98b5c, type: 3}
+  - {fileID: 8300000, guid: 9bb7d228d51ef214aa22162acbd9c3de, type: 3}
+  - {fileID: 8300000, guid: 67c17cd5530cd0e458ad47a7546cc075, type: 3}
+  - {fileID: 8300000, guid: 123595f5cfdaa514892866a20fb49f01, type: 3}
+  - {fileID: 8300000, guid: 90fade12e89d40045ab085c0325170a7, type: 3}
+  - {fileID: 8300000, guid: 8371189147116354e97d1560367e1e4b, type: 3}
+  - {fileID: 8300000, guid: d4b45682d287bb24aac983619dc703fb, type: 3}

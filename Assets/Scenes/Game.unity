@@ -620,8 +620,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 821d1118035490646a91bf07ea6453eb, type: 3}
   - {fileID: 8300000, guid: a2c07b1165594dc49aeb70530d5578e9, type: 3}
   - {fileID: 8300000, guid: 5ce13a6690f47d94e8330888fda98b5c, type: 3}
-  - {fileID: 8300000, guid: 9bb7d228d51ef214aa22162acbd9c3de, type: 3}
-  - {fileID: 8300000, guid: d4b45682d287bb24aac983619dc703fb, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 8300000, guid: 67c17cd5530cd0e458ad47a7546cc075, type: 3}
   - {fileID: 8300000, guid: 123595f5cfdaa514892866a20fb49f01, type: 3}
   - {fileID: 8300000, guid: 90fade12e89d40045ab085c0325170a7, type: 3}
@@ -1754,7 +1754,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 237
+    m_FontSize: 79
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1765,7 +1765,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: S
+  m_Text: 'Steth.
+
+    (D)'
 --- !u!222 &1654481509
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1828,7 +1830,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 237
+    m_FontSize: 92
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1839,7 +1841,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: H
+  m_Text: Hand
 --- !u!222 &1705005235
 CanvasRenderer:
   m_ObjectHideFlags: 0

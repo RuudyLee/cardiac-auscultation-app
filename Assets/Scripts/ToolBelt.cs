@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Tool { Hand, Stethoscope }
+public enum Tool { Hand, Diaphragm, Bell }
 
 public class ToolBelt : MonoBehaviour
 {
@@ -11,6 +11,8 @@ public class ToolBelt : MonoBehaviour
 
     Button handButton;
     Button stethoscopeButton;
+
+    Tool previousTool = Tool.Diaphragm;
 
     // Use this for initialization
     void Start()
@@ -30,6 +32,11 @@ public class ToolBelt : MonoBehaviour
 
     void handOnClick()
     {
+        if (activeTool != Tool.Hand)
+        {
+            previousTool = activeTool;
+        }
+
         activeTool = Tool.Hand;
         GetComponent<FingerScroll>().enabled = true;
         GetComponent<Stethoscope>().enabled = false;
@@ -37,8 +44,24 @@ public class ToolBelt : MonoBehaviour
 
     void stethoscopeOnClick()
     {
-        activeTool = Tool.Stethoscope;
         GetComponent<FingerScroll>().enabled = false;
         GetComponent<Stethoscope>().enabled = true;
+
+        if (activeTool == Tool.Hand)
+        {
+            activeTool = previousTool;
+        }
+        else if (activeTool == Tool.Diaphragm)
+        {
+            activeTool = Tool.Bell;
+            stethoscopeButton.GetComponentInChildren<Text>().text = "Steth.\n(B)";
+        }
+        else if (activeTool == Tool.Bell)
+        {
+            activeTool = Tool.Diaphragm;
+            stethoscopeButton.GetComponentInChildren<Text>().text = "Steth.\n(D)";
+        }
+
+        Debug.Log(activeTool);
     }
 }
